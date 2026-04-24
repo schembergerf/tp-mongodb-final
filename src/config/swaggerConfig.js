@@ -9,7 +9,7 @@ const options = {
       description: "API para la gestión de productos, categorías y usuarios",
       contact: {
         name: "Soporte Técnico",
-        email: "[EMAIL_ADDRESS]"
+        email: "soporte@gmail.com"
       }
     },
     servers: [

@@ -53,7 +53,6 @@ export const getAllUsersService = async () => {
 
 // Actualizar
 export const updateUserService = async (id, data, currentUser) => {
-  // Lógica de negocio: Solo el propio usuario puede editar su perfil
   if (currentUser.userId !== id) {
     const error = new Error("No tienes permisos para editar este perfil");
     error.statusCode = 403;
@@ -75,7 +74,6 @@ export const updateUserService = async (id, data, currentUser) => {
 
 // Eliminar
 export const deleteUserService = async (id, currentUser) => {
-  // Lógica de negocio: Solo el propio usuario o un ADMIN pueden eliminar
   if (currentUser.userId !== id && currentUser.role !== roleEnum[1]) {
     const error = new Error("No tienes permisos para eliminar este usuario");
     error.statusCode = 403;

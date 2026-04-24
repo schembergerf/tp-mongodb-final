@@ -1,7 +1,7 @@
 # 🛒 API RESTful - Gestión de Productos, Categorías y Usuarios
 
 ## 📌 Descripción
-Este proyecto es una API RESTful desarrollada con **Node.js**, **Express** y **MongoDB**. Permite la gestión completa de un catálogo de productos y sus categorías, incluyendo un sistema robusto de autenticación y gestión de usuarios con diferentes niveles de acceso (RBAC).
+Este proyecto es una API RESTful diseñada para la gestión de una **tienda personal**. Desarrollada con **Node.js**, **Express** y **MongoDB**, permite administrar un catálogo de productos y categorías, con un sistema de autenticación basado en roles donde el administrador actúa como el **dueño de la tienda** y los usuarios como los **compradores**.
 
 Se ha seguido una arquitectura de capas (Controllers, Services, Models) para asegurar la escalabilidad y mantenibilidad del código.
 
@@ -12,7 +12,7 @@ Se ha seguido una arquitectura de capas (Controllers, Services, Models) para ase
 - **Base de Datos:** MongoDB & Mongoose
 - **Seguridad:** JWT (JSON Web Tokens), bcrypt (Encriptación)
 - **Documentación:** Swagger (OpenAPI)
-- **Herramientas:** dotenv, cors, nodemon, Prettier
+- **Herramientas:** dotenv, cors, nodemon
 
 ---
 
@@ -45,7 +45,7 @@ tp-mongoDB-final/
 - `role`: String (Enum: `USER`, `ADMIN`. Default: `USER`)
 
 ### 2. Productos (`products`)
-- `name`: String (Requerido)
+- `name`: String (Requerido, Único)
 - `description`: String
 - `price`: Number (Requerido)
 - `stock`: Number (Requerido)
@@ -61,7 +61,7 @@ tp-mongoDB-final/
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo.git
+   git clone https://github.com/schembergerf/tp-mongodb-final.git
    ```
 2. **Instalar dependencias:**
    ```bash
@@ -70,9 +70,9 @@ tp-mongoDB-final/
 3. **Configurar variables de entorno:**
    Crea un archivo `.env` en la raíz con:
    ```env
-   PORT=3000
-   MONGO_URI=tu_uri_de_mongodb
-   JWT_SECRET=tu_clave_secreta
+   PORT=
+   MONGO_URI=
+   JWT_SECRET=
    ```
 4. **Ejecutar el proyecto:**
    ```bash
@@ -86,8 +86,8 @@ tp-mongoDB-final/
 ## 🔐 Autenticación y Usuarios
 
 ### 🛡️ Roles y Permisos
-- **USER:** Puede ver productos/categorías y gestionar su propio perfil.
-- **ADMIN:** Tiene control total sobre productos, categorías y puede ver/eliminar otros usuarios.
+- **USER (Comprador):** Puede visualizar productos y categorías, y gestionar su propio perfil de usuario.
+- **ADMIN (Dueño):** Posee control total sobre el inventario (productos y categorías), además de poder gestionar y eliminar cuentas de usuarios.
 
 ### Endpoints de Usuario
 | Método | Endpoint | Descripción | Acceso |
@@ -127,9 +127,9 @@ tp-mongoDB-final/
 ### Registro de Usuario (`POST /api/users/register`)
 ```json
 {
-  "firstName": "Juan",
-  "lastName": "Pérez",
-  "email": "juan@example.com",
+  "firstName": "Facu",
+  "lastName": "Schem",
+  "email": "facusch@example.com",
   "password": "Password123"
 }
 ```
@@ -147,7 +147,7 @@ tp-mongoDB-final/
 {
   "name": "Smartphone",
   "description": "Última generación, 128GB",
-  "price": 899.99,
+  "price": 899999,
   "stock": 50,
   "category": "65f1a..." 
 }

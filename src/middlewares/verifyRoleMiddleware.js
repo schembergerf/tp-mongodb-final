@@ -7,7 +7,6 @@ export const verifyRoleMiddleware = (rolesPermitidos) => {
           .json({ message: "User data was not found in the request" });
       }
 
-      // Permite el acceso al rol desde otros lugares
       const userRole = req.user.role;
 
       if (!rolesPermitidos.includes(userRole)) {
